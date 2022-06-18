@@ -12,7 +12,7 @@ namespace XIXXIX
 {
     public class DLWindow : EditorWindow
     {
-        public string Version = "1";
+        public string Version = "2";
         public string LatestVersion = "0";
         public string FileName = "XIXXIX-Shader";
         public string InstallPath { get; set; }
@@ -38,7 +38,15 @@ namespace XIXXIX
         {
             EditorGUILayout.BeginVertical(GUI.skin.box);
             EditorGUILayout.LabelField("Version:", Version + " - " + LatestVersion);
-            if (GUILayout.Button("Download")) Download(); 
+            if(Version == LatestVersion)
+            {
+                GUILayout.Label("There is a new Update Available!");
+                if (GUILayout.Button("Download")) Download();
+            }
+            else
+            {
+                if (GUILayout.Button("Update")) Download();
+            }
             EditorGUILayout.EndVertical();
         }
 
